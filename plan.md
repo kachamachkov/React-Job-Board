@@ -3,6 +3,7 @@
 - [x] Add Softuni server
 - [x] Add basic vite react project as client
 - [ ] Clean up client
+- [ ] Setup TailwindCSS
 - [ ] Create basic components structure
 
 ## 2. React Router
