@@ -1,7 +1,7 @@
 ## 1. Initialize project
-- [ ] Git repo
-- [ ] Add Softuni server
-- [ ] Add basic vite react project as client
+- [x] Git repo
+- [x] Add Softuni server
+- [x] Add basic vite react project as client
 - [ ] Clean up client
 - [ ] Create basic components structure
 
