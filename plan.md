@@ -7,8 +7,8 @@
 - [ ] Create basic components structure
 
 ## 2. React Router
-- [ ] Install react-router-dom
-- [ ] Setup react-router-dom
+- [x] Install react-router-dom
+- [x] Setup react-router-dom
 - [ ] Add links to navigation
 
 ## 3. Create service layer
