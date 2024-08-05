@@ -54,7 +54,7 @@
 - [ ] Logout
 - [ ] Authorized reuqests
 
-8. UI Implementation
+## 8. UI Implementation
 - [ ] Dynamic navigtion
 - [ ] Create job
   - [ ] API function
