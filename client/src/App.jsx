@@ -11,6 +11,7 @@ import JobsPage from './pages/JobsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import JobPage from './pages/JobPage';
 import AddJobPage from './pages/AddJobPage';
+import EditJobPage from './pages/EditJobPage';
 
 
 
@@ -39,6 +40,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path='/jobs' element={<JobsPage />} />
         <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob} />} />
+        <Route path='/jobs/edit/:id' element={<EditJobPage />} />
         <Route path='/jobs/:id' element={<JobPage deleteJob={deleteJob} />} />
         <Route path='*' element={<NotFoundPage />} />
       </Route>)
