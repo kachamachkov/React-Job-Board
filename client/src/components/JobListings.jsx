@@ -13,7 +13,8 @@ const JobListings = ({ isHome = false }) => {
         const res = await fetch('http://localhost:3030/jsonstore/jobs');
         const data = await res.json();
 
-        setJobs(data.jobs);
+
+        setJobs(Object.values(data));
 
       } catch (err) {
         console.log(err.message);
@@ -23,6 +24,8 @@ const JobListings = ({ isHome = false }) => {
     })();
   }, []);
 
+
+  console.log(jobs)
 
   return (
     <section className="bg-blue-50 px-4 py-10">
@@ -35,8 +38,8 @@ const JobListings = ({ isHome = false }) => {
           ? (<Spinner loading={loading} />)
           : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {jobs.map((job) => (
-                <JobListing key={job.id} job={job} />
+              {jobs.map((job, i) => (
+                <JobListing key={i} job={job} />
               ))}
             </div>
           )
