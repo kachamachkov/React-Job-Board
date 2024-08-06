@@ -18,7 +18,7 @@ import EditJobPage from './pages/EditJobPage';
 function App() {
 
   const addJob = async (newJob) => {
-    const res = await fetch('http://localhost:3030/jsonstore/jobs', {
+    const res = await fetch('http://localhost:3030/data/jobs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ function App() {
   };
 
   const deleteJob = async (id) => {
-    const res = await fetch(`http://localhost:3030/jsonstore/jobs/${id}`, {
+    const res = await fetch(`http://localhost:3030/data/jobs/${id}`, {
       method: 'DELETE',
     });
   };

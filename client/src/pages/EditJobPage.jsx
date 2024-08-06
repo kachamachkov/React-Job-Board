@@ -19,7 +19,7 @@ const EditJobPage = ({ updateJobSubmit }) => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch(`http://localhost:3030/jsonstore/jobs/${id}`);
+        const res = await fetch(`http://localhost:3030/data/jobs/${id}`);
         const data = await res.json();
         setJob(data);
 

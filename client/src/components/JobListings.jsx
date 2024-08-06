@@ -10,7 +10,7 @@ const JobListings = ({ isHome = false }) => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch('http://localhost:3030/jsonstore/jobs');
+        const res = await fetch('http://localhost:3030/data/jobs');
         const data = await res.json();
 
         setJobs(Object.values(data));
