@@ -13,7 +13,6 @@ const JobListings = ({ isHome = false }) => {
         const res = await fetch('http://localhost:3030/jsonstore/jobs');
         const data = await res.json();
 
-
         setJobs(Object.values(data));
 
       } catch (err) {
@@ -25,7 +24,6 @@ const JobListings = ({ isHome = false }) => {
   }, []);
 
 
-  console.log(jobs)
 
   return (
     <section className="bg-blue-50 px-4 py-10">

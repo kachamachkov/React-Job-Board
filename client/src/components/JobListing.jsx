@@ -7,7 +7,6 @@ const JobListing = ({ job }) => {
 
   let description = job.description;
 
-  console.log(job)
 
   if (!showFullDescription) {
     description = description.substring(0, 86) + '...';
