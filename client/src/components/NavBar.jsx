@@ -17,7 +17,7 @@ const NavBar = () => {
                                 alt="React Jobs"
                             />
                             <span className="hidden md:block text-white text-2xl font-bold ml-2">
-                                React Jobs
+                                React Jobs Board
                             </span>
                         </a>
                         <div className="md:ml-auto">

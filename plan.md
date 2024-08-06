@@ -4,12 +4,12 @@
 - [x] Add basic vite react project as client
 - [x] Clean up client
 - [x] Setup TailwindCSS (install, font & grid)
-- [ ] Create basic components structure
+- [x] Create basic components structure
 
 ## 2. React Router
 - [x] Install react-router-dom
 - [x] Setup react-router-dom
-- [ ] Add links to navigation
+- [x] Add links to navigation
 
 ## 3. Create service layer
 - [ ] Service layer architecture
