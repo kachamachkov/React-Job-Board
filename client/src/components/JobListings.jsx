@@ -7,23 +7,6 @@ const JobListings = ({ isHome = false }) => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch('http://localhost:3030/data/jobs');
-        const data = await res.json();
-
-        setJobs(Object.values(data));
-
-      } catch (err) {
-        console.log(err.message);
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, []);
-
-
 
   return (
     <section className="bg-blue-50 px-4 py-10">
