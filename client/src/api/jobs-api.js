@@ -15,10 +15,13 @@ export const getOne = (jobId) => request.get(`${BASE_URL}/${jobId}`);
 
 export const create = (jobData) => request.post(`${BASE_URL}`, jobData);
 
+export const remove = (jobId) => request.del(`${BASE_URL}/${jobId}`)
+
 const jobsAPI = {
   getOne,
   getAll,
-  create
+  create,
+  remove
 };
 
 export default jobsAPI;

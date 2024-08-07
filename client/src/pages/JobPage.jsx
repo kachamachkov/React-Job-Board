@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 
 
@@ -10,12 +10,14 @@ import { useGetOneJobs } from "../hooks/useJobs";
 import { useForm } from "../hooks/useForm";
 import { AuthContext } from "../contexts/AuthContext";
 import { useCreateComment, useGetAllComments } from "../hooks/useCreateComment";
+import jobsAPI from "../api/jobs-api";
 
 const initialValues = {
   comment: ''
 };
 
 const JobPage = () => {
+  const navigate = useNavigate();
   const { jobId } = useParams();
   // const [loading, setLoading] = useState(true);
   const [comments, setComments] = useGetAllComments(jobId);
@@ -44,18 +46,17 @@ const JobPage = () => {
 
   const isOwner = userId === job._ownerId;
 
-  // const onDeleteClick = (jobId) => {
+  const gameDeleteHandler = async () => {
+    try {
 
-  //   const confirm = window.confirm('Are you sure you want to delete this listing?');
+      await jobsAPI.remove(jobId);
 
-  //   if (!confirm) {
-  //     return;
-  //   }
+      navigate('/')
 
-  //   deleteJob(jobId);
-  //   navigate('/jobs');
-
-  // };
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
 
   // loading ? <Spinner /> :
@@ -179,7 +180,7 @@ const JobPage = () => {
                     className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                   >Edit Job
                   </Link>
-                  <button onClick={() => onDeleteClick(job._id)}
+                  <button onClick={gameDeleteHandler}
                     className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                   >
                     Delete Job

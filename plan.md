@@ -60,8 +60,11 @@
   - [x] API function
   - [x] Create Hook
 - [ ] Latest jobs
+- [ ] Edit job
+- [ ] Delete job
+- [ ] Route guards
 
 ## 9. Refactoring
 - [x] Extract auth state from app component
 - [x] Persist auth state
-- [ ] Refactor comments
+- [x] Refactor comments
