@@ -46,6 +46,27 @@ const NavBar = () => {
                 >
                   Add Job
                 </NavLink>
+
+                <NavLink
+                  to="/login"
+                  className={linkClass}
+                >
+                  Login
+                </NavLink>
+
+                <NavLink
+                  to="/register"
+                  className={linkClass}
+                >
+                  Register
+                </NavLink>
+
+                <NavLink
+                  to="/logout"
+                  className={linkClass}
+                >
+                  Logout
+                </NavLink>
               </div>
             </div>
           </div>
