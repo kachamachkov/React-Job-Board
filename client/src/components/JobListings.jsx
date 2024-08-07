@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import Spinner from './Spinner';
 import JobListing from './JobListing';
+import * as jobsAPI from '../api/jobs-api'
 
 const JobListings = ({ isHome = false }) => {
 
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  useEffect
 
 
   return (
