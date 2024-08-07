@@ -30,8 +30,6 @@ async function requester(method, url, data) {
   }
 
   return result;
-
-
 }
 
 
