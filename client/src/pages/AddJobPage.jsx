@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
 
 
@@ -9,18 +7,15 @@ const initialValues = {
   description: '',
   location: '',
   salary: 'Employer did not specify',
-  company: {
-    name: '',
-    description: '',
-    contactEmail: '',
-  }
+  companyName: '',
+  companyDescription: '',
+  contactEmail: '',
 };
 
 console.log(initialValues);
 
 const AddJobPage = ({ addJobSubmit }) => {
 
-  const navigate = useNavigate();
 
   const createHandler = (values) => {
     console.log(values);
@@ -32,36 +27,6 @@ const AddJobPage = ({ addJobSubmit }) => {
     submitHandler
   } = useForm(initialValues, createHandler);
 
-
-  // const [title, setTitle] = useState('');
-  // const [type, setType] = useState('Full-Time');
-  // const [location, setLocation] = useState('');
-  // const [description, setDescription] = useState('');
-  // const [salary, setSalary] = useState('Employer did not specify');
-  // const [companyName, setCompanyName] = useState('');
-  // const [companyDescription, setCompanyDescription] = useState('');
-  // const [contactEmail, setContactEmail] = useState('');
-
-
-  // const submitForm = (e) => {
-  //   e.preventDefault();
-
-  //   const newJob = {
-  //     title,
-  //     type,
-  //     description,
-  //     location,
-  //     salary,
-  //     company: {
-  //       name: companyName,
-  //       description: companyDescription,
-  //       contactEmail
-  //     }
-  //   };
-
-  //   addJobSubmit(newJob);
-  //   return navigate('/jobs');
-  // };
 
   return (
     <section className="bg-indigo-50">
@@ -163,33 +128,33 @@ const AddJobPage = ({ addJobSubmit }) => {
             <h3 className="text-2xl mb-5">Company Info</h3>
 
             <div className="mb-4">
-              <label htmlFor="name" className="block text-gray-700 font-bold mb-2"
+              <label htmlFor="companyName" className="block text-gray-700 font-bold mb-2"
               >Company Name</label
               >
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="companyName"
+                name="companyName"
                 className="border rounded w-full py-2 px-3"
                 placeholder="Company Name"
-                value={values.name}
+                value={values.companyName}
                 onChange={changeHandler}
               />
             </div>
 
             <div className="mb-4">
               <label
-                htmlFor="description"
+                htmlFor="companyDescription"
                 className="block text-gray-700 font-bold mb-2"
               >Company Description</label
               >
               <textarea
-                id="description"
-                name="description"
+                id="companyDescription"
+                name="companyDescription"
                 className="border rounded w-full py-2 px-3"
                 rows="4"
                 placeholder="What does your company do?"
-                value={values.company.description}
+                value={values.companyDescription}
                 onChange={changeHandler}
               ></textarea>
             </div>
