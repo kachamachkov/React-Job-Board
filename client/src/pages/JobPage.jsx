@@ -1,47 +1,69 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
+
+
 import Spinner from "../components/Spinner";
 import { FaArrowLeft, FaMapMarker } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const JobPage = ({ deleteJob }) => {
-  const navigate = useNavigate();
-  const { id } = useParams();
-  const [job, setJob] = useState(null);
-  const [loading, setLoading] = useState(true);
+import { useGetOneJobs } from "../hooks/useJobs";
+import { useForm } from "../hooks/useForm";
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch(`http://localhost:3030/data/jobs/${id}`);
-        const data = await res.json();
-        setJob(data);
+const initialValues = {
+  comment: ''
+};
 
-      } catch (err) {
-        console.log(err.message);
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, []);
+const JobPage = () => {
+  const { jobId } = useParams();
+  // const [loading, setLoading] = useState(true);
+  const [job, setJob] = useGetOneJobs(jobId);
 
 
-  const onDeleteClick = (jobId) => {
+  const [comment, setComment] = useState('');
 
-    const confirm = window.confirm('Are you sure you want to delete this listing?');
+  const {
+    values,
+    changeHandler,
+    submitHandler
 
-    if (!confirm) {
-      return;
-    }
-
-    deleteJob(jobId);
-    navigate('/jobs');
-
-  };
+  } = useForm(initialValues, (values) => {
+    console.log(values);
+  });
 
 
 
-  return loading ? <Spinner /> : (
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const res = await fetch(`http://localhost:3030/data/jobs/${id}`);
+  //       const data = await res.json();
+  //       setJob(data);
+
+  //     } catch (err) {
+  //       console.log(err.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   })();
+  // }, []);
+
+
+  // const onDeleteClick = (jobId) => {
+
+  //   const confirm = window.confirm('Are you sure you want to delete this listing?');
+
+  //   if (!confirm) {
+  //     return;
+  //   }
+
+  //   deleteJob(jobId);
+  //   navigate('/jobs');
+
+  // };
+
+
+// loading ? <Spinner /> :
+  return  (
     <>
       <section>
         <div className="container m-auto py-6 px-6">
@@ -107,16 +129,17 @@ const JobPage = ({ deleteJob }) => {
                 <h3 className="text-indigo-800 text-lg font-bold mb-6">
                   Add Comment
                 </h3>
-                <form>
-                  <textarea className="mb-4 h-full w-full focus:shadow-outline mt-4 block"
-                  name="comment"
-                  placeholder="Comment..."
-                  // onChange={}
-                  
+                <form onSubmit={submitHandler}>
+                  <textarea className="rounded-sm bg-gray-100 mb-4 h-full w-full focus:shadow-outline mt-4 block"
+                    name="comment"
+                    placeholder="Comment..."
+                    value={values.comment}
+                    onChange={changeHandler}
+
                   ></textarea>
 
                   <input type="submit" value='Add Comment'
-                  className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                    className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                   />
                 </form>
               </div>
