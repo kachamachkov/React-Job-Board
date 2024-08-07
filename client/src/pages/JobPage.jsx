@@ -36,7 +36,7 @@ const JobPage = () => {
       const newComment = await createJobComment(jobId, comment);
 
       setComments(oldComments => [...oldComments, newComment]);
-      
+
     } catch (err) {
       console.log(err.message);
     }
@@ -111,7 +111,7 @@ const JobPage = () => {
                 <div className="mb-4">
                   {/* render comments here */}
                   {comments.map(comment => (
-                    <p key={comment._id}>Username: {comment.text}</p>
+                    <p key={comment._id}>{comment.author.email}: {comment.text}</p>
 
                   ))}
                 </div>
