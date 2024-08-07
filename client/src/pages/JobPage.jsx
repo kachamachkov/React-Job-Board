@@ -35,7 +35,7 @@ const JobPage = ({ deleteJob }) => {
     }
 
     deleteJob(jobId);
-    navigate('/jobs')
+    navigate('/jobs');
 
   };
 
@@ -86,6 +86,42 @@ const JobPage = ({ deleteJob }) => {
 
                 <p className="mb-4">{job.salary}</p>
               </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-md mt-6">
+                <h3 className="text-indigo-800 text-lg font-bold mb-6">
+                  Comments
+                </h3>
+
+                <p className="mb-4">
+                  {/* render comments here */}
+                  {job.description}
+                </p>
+
+                {/* <h3 className="text-indigo-800 text-lg font-bold mb-2">Salary</h3>
+
+                <p className="mb-4">{job.salary}</p> */}
+              </div>
+
+
+              <div className="bg-white p-6 rounded-lg shadow-md mt-6">
+                <h3 className="text-indigo-800 text-lg font-bold mb-6">
+                  Add Comment
+                </h3>
+                <form>
+                  <textarea className="mb-4 h-full w-full focus:shadow-outline mt-4 block"
+                  name="comment"
+                  placeholder="Comment..."
+                  // onChange={}
+                  
+                  ></textarea>
+
+                  <input type="submit" value='Add Comment'
+                  className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                  />
+                </form>
+              </div>
+
+
             </main>
 
             <aside>

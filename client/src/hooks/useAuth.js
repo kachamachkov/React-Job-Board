@@ -35,8 +35,8 @@ export const useLogout = () => {
   const logoutHandler = async () => {
 
     try {
-      await logout();
       localLogout();
+      await logout();
 
     } catch (err) {
       console.log(err.message);

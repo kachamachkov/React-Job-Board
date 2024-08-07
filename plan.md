@@ -64,3 +64,4 @@
 ## 9. Refactoring
 - [x] Extract auth state from app component
 - [x] Persist auth state
+- [ ] Refactor comments
