@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
 import { useGetOneJobs } from "../hooks/useJobs";
-import { useEffect } from "react";
 import jobsAPI from "../api/jobs-api";
 
 

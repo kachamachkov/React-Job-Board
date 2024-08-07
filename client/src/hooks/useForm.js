@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 export function useForm(initialValues, submitCallback) {
   const [values, setValues] = useState(initialValues);
 
-  // reinitialize
   useEffect(() => {
     setValues(initialValues);
   }, [initialValues]);

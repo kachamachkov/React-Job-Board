@@ -6,7 +6,6 @@ import jobsAPI from '../api/jobs-api';
 const JobListings = ({ isHome = false }) => {
 
   const [latestJobs, setLatestJobs] = useState([]);
-  // const [jobs] = useGetAllJobs();
 
   useEffect(() => {
     (async () => {
