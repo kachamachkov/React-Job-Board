@@ -6,28 +6,25 @@ My project relatively simple online job board. It aims to assist employers and e
 ## Installation and Setup:
 Follow these instructions to get the project up and running on your local machine.
 
-## Ensure you have the following installed:
-```bash
-Node.js
-npm (Node Package Manager)
-```
+## 1. Ensure you have NODE.js installed.
 
-## Cloning the Repository:
+
+## 2. Clone the Repository:
 ```bash
 git clone https://github.com/kachamachkov/React-Job-Board
 cd .
 ```
 
-## To start the server:
+## 3. To start the server (in new terminal):
 ```bash
 cd server
 node server.js
 ```
 
-## To run the client (in new terminal):
+## 4. To run the client (in new terminal):
 ```bash
 cd client
 npm i 
 npm run dev
 ```
-Follow the link in the terminal to start the project in your browser or use the link http://localhost:5173/ in a new tab.
+## 5. Follow the link in the terminal to start the project in your browser or use the link http://localhost:5173/ in a new tab.
