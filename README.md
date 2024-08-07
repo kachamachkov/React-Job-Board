@@ -6,7 +6,7 @@ My project relatively simple online job board. It aims to assist employers and e
 ## Installation and Setup:
 Follow these instructions to get the project up and running on your local machine.
 
-## 1. Ensure you have NODE.js installed.
+## 1. Ensure you have node.js installed on your machine.
 
 
 ## 2. Clone the Repository:
