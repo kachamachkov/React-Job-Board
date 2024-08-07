@@ -7,6 +7,7 @@ export const useLogin = () => {
 
     const result = await login(email, password);
 
+    console.log(result)
 
   };
 

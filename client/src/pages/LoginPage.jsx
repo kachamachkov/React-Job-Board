@@ -11,7 +11,7 @@ const LoginPage = () => {
     async ({ email, password }) => {
       try {
         await login(email, password);
-        navigate('/')
+        navigate('/');
 
       } catch (err) {
         console.log(err.message);
@@ -28,14 +28,16 @@ const LoginPage = () => {
           <hr className="mt-3" />
           <div className="mt-3">
 
-            <label htmlFor="username" className="block text-base mb-2">Email</label>
+            <label htmlFor="email" className="block text-base mb-2">Email</label>
             <input
-              type="text"
-              id="username"
+              type="email"
+              id="email"
+              name="email"
               className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
               placeholder="john@gmail.com"
               value={values.email}
               onChange={changeHandler}
+              autoComplete=""
             />
           </div>
 
@@ -44,7 +46,9 @@ const LoginPage = () => {
             <input
               type="password"
               id="password"
+              name="password"
               className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+              autoComplete=""
               value={values.password}
               onChange={changeHandler}
             />
