@@ -1,7 +1,7 @@
 const RegisterPage = () => {
   return (
     <form>
-      <div className="flex justify-center items-center h-screen bg-indigo-600">
+      <div className="flex justify-center items-start h-screen bg-indigo-600 p-20">
         <div className="w-96 p-6 shadow-lg bg-white rounded-md">
           <h1 className="text-3xl block text-center font-semibold"><i className="fa-solid fa-user"></i> Register</h1>
           <hr className="mt-3" />
