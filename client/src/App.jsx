@@ -1,12 +1,14 @@
+import { useState } from 'react';
 import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider
 } from 'react-router-dom';
+import { AuthContext } from './contexts/AuthContext';
 
-import HomePage from './pages/HomePage';
 import MainLayout from './layouts/MainLayout';
+import HomePage from './pages/HomePage';
 import JobsPage from './pages/JobsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import JobPage from './pages/JobPage';
@@ -18,6 +20,19 @@ import RegisterPage from './pages/RegisterPage';
 
 
 function App() {
+
+  const [authState, setAuthState] = useState({});
+
+  const changeAuthState = (state) => {
+    setAuthState(state);
+  };
+
+  const contextData = {
+    email: authState.email,
+    accessToken: authState.accessToken,
+    isAuthenticated: !!authState.email,
+    changeAuthState
+  };
 
   const addJob = async (newJob) => {
     const res = await fetch('http://localhost:3030/data/jobs', {
@@ -47,10 +62,14 @@ function App() {
         <Route path='*' element={<NotFoundPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
-      </Route>) 
+      </Route>)
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <AuthContext.Provider value={contextData}>
+      <RouterProvider router={router} />;
+    </AuthContext.Provider>
+  );
 }
 
 export default App;
