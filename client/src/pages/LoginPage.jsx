@@ -1,6 +1,27 @@
+import { useNavigate } from "react-router-dom";
+import { useLogin } from "../hooks/useAuth";
+import { useForm } from "../hooks/useForm";
+
 const LoginPage = () => {
+  const login = useLogin();
+  const navigate = useNavigate();
+
+  const { values, changeHandler, submitHandler } = useForm(
+    { email: '', password: '' },
+    async ({ email, password }) => {
+      try {
+        await login(email, password);
+        navigate('/')
+
+      } catch (err) {
+        console.log(err.message);
+
+      }
+    }
+  );
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="flex justify-center items-start h-screen bg-indigo-600 p-20">
         <div className="w-96 p-6 shadow-lg bg-white rounded-md">
           <h1 className="text-3xl block text-center font-semibold"><i className="fa-solid fa-user"></i> Login</h1>
@@ -8,12 +29,25 @@ const LoginPage = () => {
           <div className="mt-3">
 
             <label htmlFor="username" className="block text-base mb-2">Email</label>
-            <input type="text" id="username" className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="john@gmail.com" />
+            <input
+              type="text"
+              id="username"
+              className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+              placeholder="john@gmail.com"
+              value={values.email}
+              onChange={changeHandler}
+            />
           </div>
 
           <div className="mt-3">
             <label htmlFor="password" className="block text-base mb-2">Password</label>
-            <input type="password" id="password" className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" />
+            <input
+              type="password"
+              id="password"
+              className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+              value={values.password}
+              onChange={changeHandler}
+            />
           </div>
 
           <div className="mt-5">

@@ -47,7 +47,7 @@ function App() {
         <Route path='*' element={<NotFoundPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
-      </Route>)
+      </Route>) 
   );
 
   return <RouterProvider router={router} />;
