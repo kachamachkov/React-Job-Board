@@ -29,14 +29,19 @@ export const useRegister = () => {
 };
 
 export const useLogout = () => {
-  const { logout: localLogout } = useContext(AuthContext);
+  const { logout: localLogout, changeAuthState } = useContext(AuthContext);
 
 
   const logoutHandler = async () => {
-    await logout();
-    localLogout();
 
-    changeAuthState(authData);
+    try {
+      await logout();
+      localLogout();
+
+    } catch (err) {
+      console.log(err.message);
+    }
+
   };
 
   return logoutHandler;
