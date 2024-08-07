@@ -21,9 +21,13 @@ import RegisterPage from './pages/RegisterPage';
 
 function App() {
 
+  // TODO: remove this from app component
   const [authState, setAuthState] = useState({});
 
   const changeAuthState = (state) => {
+    // TODO: quick solution fix by implementing persisted auth state (not necessary)
+    localStorage.setItem('accessToken', state.accessToken);
+    
     setAuthState(state);
   };
 
