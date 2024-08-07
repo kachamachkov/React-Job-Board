@@ -17,7 +17,6 @@ export function useGetAllComments(jobId) {
     (async () => {
       const result = await commentsApi.getAll(jobId);
 
-      console.log(result)
       setComments(result);
 
     })();

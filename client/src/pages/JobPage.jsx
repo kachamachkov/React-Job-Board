@@ -34,24 +34,6 @@ const JobPage = () => {
     createJobComment(jobId, comment);
   });
 
-
-
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const res = await fetch(`http://localhost:3030/data/jobs/${id}`);
-  //       const data = await res.json();
-  //       setJob(data);
-
-  //     } catch (err) {
-  //       console.log(err.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   })();
-  // }, []);
-
-
   // const onDeleteClick = (jobId) => {
 
   //   const confirm = window.confirm('Are you sure you want to delete this listing?');
@@ -118,10 +100,13 @@ const JobPage = () => {
                   Comments
                 </h3>
 
-                <p className="mb-4">
+                <div className="mb-4">
                   {/* render comments here */}
-                  {job.description}
-                </p>
+                  {comments.map(comment => (
+                    <p key={comment._id}>Username: {comment.text}</p>
+
+                  ))}
+                </div>
 
                 {/* <h3 className="text-indigo-800 text-lg font-bold mb-2">Salary</h3>
 
