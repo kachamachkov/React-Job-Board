@@ -1,7 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
+import { useContext } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
 
 const NavBar = () => {
+
+  const { isAuthenticated } = useContext(AuthContext);
 
   const linkClass = ({ isActive }) => isActive
     ? 'text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'
@@ -40,33 +44,44 @@ const NavBar = () => {
                 >
                   Jobs
                 </NavLink>
-                <NavLink
-                  to="/add-job"
-                  className={linkClass}
-                >
-                  Add Job
-                </NavLink>
 
-                <NavLink
-                  to="/login"
-                  className={linkClass}
-                >
-                  Login
-                </NavLink>
+                {isAuthenticated
+                  ? (
+                    <>
+                      <NavLink
+                        to="/add-job"
+                        className={linkClass}
+                      >
+                        Add Job
+                      </NavLink>
 
-                <NavLink
-                  to="/register"
-                  className={linkClass}
-                >
-                  Register
-                </NavLink>
+                      <NavLink
+                        to="/logout"
+                        className={linkClass}
+                      >
+                        Logout
+                      </NavLink>
+                    </>
+                  )
 
-                <NavLink
-                  to="/logout"
-                  className={linkClass}
-                >
-                  Logout
-                </NavLink>
+                  : (
+                    <>
+                      <NavLink
+                        to="/login"
+                        className={linkClass}
+                      >
+                        Login
+                      </NavLink>
+
+                      <NavLink
+                        to="/register"
+                        className={linkClass}
+                      >
+                        Register
+                      </NavLink>
+                    </>
+                  )
+                }
               </div>
             </div>
           </div>
