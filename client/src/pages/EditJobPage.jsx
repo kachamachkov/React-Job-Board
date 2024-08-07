@@ -1,7 +1,8 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
 import { useGetOneJobs } from "../hooks/useJobs";
 import { useEffect } from "react";
+import jobsAPI from "../api/jobs-api";
 
 
 const initialValues = {
@@ -17,15 +18,18 @@ const initialValues = {
 
 
 const EditJobPage = () => {
+  const navigate = useNavigate();
   const { jobId } = useParams();
   const [job, setJob] = useGetOneJobs(jobId);
-  console.log(job);
 
   const {
     values,
     changeHandler,
     submitHandler,
-  } = useForm(Object.assign(initialValues, job), (values) => {
+  } = useForm(Object.assign(initialValues, job), async (values) => {
+    const updatedJob = await jobsAPI.update(jobId, values);
+
+    navigate(`/jobs/${jobId}`);
   });
 
 

@@ -1341,31 +1341,31 @@
   };
   var seedData = {
     jobs: {
-      "3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
-        _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-        title: "Senior React Developer",
-        type: "Full-Time",
-        description: "We are seeking a talented Front-End Developer to join our team in Sofia, Bulgaria. The ideal candidate will have strong skills in HTML, CSS, and JavaScript, with experience working with modern JavaScript frameworks such as React or Angular.",
-        location: "Sofia, Bulgaria",
-        salary: "7-10K BGN",
-        companyName: "NewTek Solutions",
-        companyDescription: "NewTek Solutions is a leading technology company specializing in web development and digital solutions. We pride ourselves on delivering high-quality products and services to our clients while fostering a collaborative and innovative work environment.",
-        contactEmail: "support@teksolutions.com",
-        _createdOn: 1613551279012
+      // "3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
+      //   _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+      //   title: "Senior React Developer",
+      //   type: "Full-Time",
+      //   description: "We are seeking a talented Front-End Developer to join our team in Sofia, Bulgaria. The ideal candidate will have strong skills in HTML, CSS, and JavaScript, with experience working with modern JavaScript frameworks such as React or Angular.",
+      //   location: "Sofia, Bulgaria",
+      //   salary: "7-10K BGN",
+      //   companyName: "NewTek Solutions",
+      //   companyDescription: "NewTek Solutions is a leading technology company specializing in web development and digital solutions. We pride ourselves on delivering high-quality products and services to our clients while fostering a collaborative and innovative work environment.",
+      //   contactEmail: "support@teksolutions.com",
+      //   _createdOn: 1613551279012
 
-      },
-      "8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
-        _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-        title: "Front-End Engineer (React & Redux)",
-        type: "Full-Time",
-        description: "Join our team as a Front-End Developer in sunny Plovdiv, Bulgaria. We are looking for a motivated individual with a passion for crafting beautiful and responsive web applications. Experience with UI/UX design principles and a strong attention to detail are highly desirable.",
-        location: "Plovdiv, Buglaria",
-        salary: "6-8K BGN",
-        companyName: "Veneer Solutions",
-        companyDescription: "Veneer Solutions is a creative agency specializing in digital design and development. Our team is dedicated to pushing the boundaries of creativity and innovation to deliver exceptional results for our clients.",
-        contactEmail: "support@veneer.com",
-        _createdOn: 1613551344360
-      },
+      // },
+      // "8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
+      //   _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+      //   title: "Front-End Engineer (React & Redux)",
+      //   type: "Full-Time",
+      //   description: "Join our team as a Front-End Developer in sunny Plovdiv, Bulgaria. We are looking for a motivated individual with a passion for crafting beautiful and responsive web applications. Experience with UI/UX design principles and a strong attention to detail are highly desirable.",
+      //   location: "Plovdiv, Buglaria",
+      //   salary: "6-8K BGN",
+      //   companyName: "Veneer Solutions",
+      //   companyDescription: "Veneer Solutions is a creative agency specializing in digital design and development. Our team is dedicated to pushing the boundaries of creativity and innovation to deliver exceptional results for our clients.",
+      //   contactEmail: "support@veneer.com",
+      //   _createdOn: 1613551344360
+      // },
     },
     recipes: {
       "3987279d-0ad4-4afb-8ca9-5b256ae3b298": {

@@ -1,20 +1,22 @@
 import JobListing from './JobListing';
 import { useGetAllJobs } from '../hooks/useJobs';
 import { useEffect, useState } from 'react';
+import jobsAPI from '../api/jobs-api';
 
 const JobListings = ({ isHome = false }) => {
 
-  const [jobs, setJobs] = useState([]);
+  const [latestJobs, setLatestJobs] = useState([]);
   // const [jobs] = useGetAllJobs();
 
   useEffect(() => {
     (async () => {
-      const response = await fetch('http://localhost:3030/data/jobs');
-      const result = await response.json();
+      const result = await jobsAPI.getLatestJobs();
 
-      setJobs(result);
+      setLatestJobs(result);
     })();
   }, []);
+
+
 
   return (
     <section className="bg-blue-50 px-4 py-10">
@@ -23,7 +25,7 @@ const JobListings = ({ isHome = false }) => {
           {isHome ? 'Recent Jobs' : 'Browse Jobs'}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {jobs.map((job) => (
+          {latestJobs.map((job) => (
             <JobListing key={job._id} job={job} />
           ))}
         </div>
