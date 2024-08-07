@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { useGetOneJobs } from "../hooks/useJobs";
 import { useForm } from "../hooks/useForm";
 import { AuthContext } from "../contexts/AuthContext";
-import useCreateComment from "../hooks/useCreateComment";
+import { useCreateComment, useGetAllComments } from "../hooks/useCreateComment";
 
 const initialValues = {
   comment: ''
@@ -18,12 +18,12 @@ const initialValues = {
 const JobPage = () => {
   const { jobId } = useParams();
   // const [loading, setLoading] = useState(true);
+  const [comments, setComments] = useGetAllComments(jobId);
   const createJobComment = useCreateComment();
   const [job] = useGetOneJobs(jobId);
 
   const { isAuthenticated } = useContext(AuthContext);
 
-  const [comment, setComment] = useState('');
 
   const {
     values,

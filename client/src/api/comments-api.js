@@ -1,6 +1,6 @@
 import requester from "./requester";
 
-const BASE_URL = 'http://localhost:3030/data/jobs/';
+const BASE_URL = 'http://localhost:3030/data/comments/';
 
 // add comments collection to server
 const create = async (jobId, text) => await requester.post(BASE_URL, { jobId, text });
