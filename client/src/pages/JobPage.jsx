@@ -22,7 +22,7 @@ const JobPage = () => {
   const createJobComment = useCreateComment();
   const [job] = useGetOneJobs(jobId);
 
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, userId } = useContext(AuthContext);
 
 
   const {
@@ -41,6 +41,8 @@ const JobPage = () => {
       console.log(err.message);
     }
   });
+
+  const isOwner = userId === job._ownerId;
 
   // const onDeleteClick = (jobId) => {
 
@@ -169,19 +171,22 @@ const JobPage = () => {
 
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-                <h3 className="text-xl font-bold mb-6">Manage Job</h3>
-                <Link
-                  to={`/jobs/edit/${job.id}`}
-                  className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-                >Edit Job
-                </Link>
-                <button onClick={() => onDeleteClick(job._id)}
-                  className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-                >
-                  Delete Job
-                </button>
-              </div>
+              {isOwner && (
+                <div className="bg-white p-6 rounded-lg shadow-md mt-6">
+                  <h3 className="text-xl font-bold mb-6">Manage Job</h3>
+                  <Link
+                    to={`/jobs/edit/${job.id}`}
+                    className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                  >Edit Job
+                  </Link>
+                  <button onClick={() => onDeleteClick(job._id)}
+                    className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                  >
+                    Delete Job
+                  </button>
+                </div>
+              )}
+
             </aside>
           </div>
         </div>
