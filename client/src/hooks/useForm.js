@@ -1,24 +1,26 @@
 import { useState } from 'react';
 
 export function useForm(initialValues, submitCallback) {
-    const [values, setValues] = useState(initialValues);
+  const [values, setValues] = useState(initialValues);
 
-    const changeHandler = (e) => {
-        setValues(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }));
-    };
+  const changeHandler = (e) => {
+    setValues(state => ({
+      ...state,
+      [e.target.name]: e.target.value
+    }));
+  };
 
-    const submitHandler = (e) => {
-        e.preventDefault();
+  const submitHandler = (e) => {
+    e.preventDefault();
 
-        submitCallback(values);
-    };
+    submitCallback(values);
 
-    return {
-        values,
-        changeHandler,
-        submitHandler
-    };
+    setValues(initialValues);
+  };
+
+  return {
+    values,
+    changeHandler,
+    submitHandler
+  };
 }

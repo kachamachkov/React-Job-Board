@@ -30,8 +30,16 @@ const JobPage = () => {
     changeHandler,
     submitHandler
 
-  } = useForm(initialValues, ({ comment }) => {
-    createJobComment(jobId, comment);
+  } = useForm(initialValues, async ({ comment }) => {
+    try {
+
+      const newComment = await createJobComment(jobId, comment);
+
+      setComments(oldComments => [...oldComments, newComment]);
+      
+    } catch (err) {
+      console.log(err.message);
+    }
   });
 
   // const onDeleteClick = (jobId) => {
