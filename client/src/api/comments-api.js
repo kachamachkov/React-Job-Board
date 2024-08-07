@@ -3,14 +3,17 @@ import requester from "./requester";
 const BASE_URL = 'http://localhost:3030/data/comments/';
 
 // add comments collection to server
-const create = async (jobId, text) => await requester.post(BASE_URL, { jobId, text });
+const create = (jobId, text) => requester.post(BASE_URL, { jobId, text });
 
 
-const getAll = async (jobId) => {
-  const result = await requester.get(BASE_URL);
+const getAll = (jobId) => {
 
-  const comments = Object.values(result);
-  return comments;
+  const params = new URLSearchParams({
+    where: `jobId="${jobId}"`
+  });
+
+  return requester.get(`${BASE_URL}?${params.toString()}`);
+
 
 };
 
