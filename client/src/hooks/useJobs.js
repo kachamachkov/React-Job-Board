@@ -34,7 +34,7 @@ export function useGetOneJobs(jobId) {
 }
 
 export function useCreateJob() {
-  //    must return function , as we need to utilize it at later stage
+
   const jobCreateHandler = (jobData) => jobsAPI.create(jobData);
 
   return jobCreateHandler;

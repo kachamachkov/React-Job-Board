@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
+import { useCreateJob } from "../hooks/useJobs";
 
 
 const initialValues = {
@@ -12,13 +14,23 @@ const initialValues = {
   contactEmail: '',
 };
 
-console.log(initialValues);
 
-const AddJobPage = ({ addJobSubmit }) => {
+const AddJobPage = () => {
+  const navigate = useNavigate();
+  const createJob = useCreateJob();
 
 
-  const createHandler = (values) => {
-    console.log(values);
+  const createHandler = async (values) => {
+
+    try {
+      const { _id: gameId } = await createJob(values);
+      navigate(`/jobs/${gameId}`);
+
+    } catch (err) {
+      // TODO: set error state and display (in case create fails)
+      console.log(err.message);
+    }
+
   };
 
   const {

@@ -57,7 +57,7 @@ function App() {
       <Route path='/' element={<MainLayout />} >
         <Route index element={<HomePage />} />
         <Route path='/jobs' element={<JobsPage />} />
-        <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob} />} />
+        <Route path='/add-job' element={<AddJobPage />} />
         <Route path='/jobs/edit/:id' element={<EditJobPage />} />
         <Route path='/jobs/:id' element={<JobPage deleteJob={deleteJob} />} />
         <Route path='*' element={<NotFoundPage />} />
