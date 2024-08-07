@@ -113,7 +113,7 @@ const JobPage = () => {
 
                 <div className="mb-4">
                   {comments.map(comment => (
-                    <p key={comment._id}>{comment.author.email}: {comment.text}</p>
+                    <p key={comment._id}>{comment.author?.email}: {comment.text}</p>
 
                   ))}
                 </div>

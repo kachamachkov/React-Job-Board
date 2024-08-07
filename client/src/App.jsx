@@ -16,6 +16,8 @@ import EditJobPage from './pages/EditJobPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import LogoutPage from './pages/LogoutPage';
+import AuthenticatedView from './components/AuthenticatedView';
+import GuestView from './components/GuestView';
 
 
 function App() {
@@ -24,13 +26,13 @@ function App() {
       <Route path='/' element={<MainLayout />} >
         <Route index element={<HomePage />} />
         <Route path='/jobs' element={<JobsPage />} />
-        <Route path='/add-job' element={<AddJobPage />} />
-        <Route path='/jobs/edit/:jobId' element={<EditJobPage />} />
+        <Route path='/add-job' element={<AuthenticatedView> <AddJobPage /> </AuthenticatedView>} />
+        <Route path='/jobs/edit/:jobId' element={<AuthenticatedView> <EditJobPage /> </AuthenticatedView>} />
         <Route path='/jobs/:jobId' element={<JobPage />} />
         <Route path='*' element={<NotFoundPage />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/register' element={<RegisterPage />} />
-        <Route path='/logout' element={<LogoutPage />} />
+        <Route path='/login' element={<GuestView> <LoginPage /> </GuestView>} />
+        <Route path='/register' element={<GuestView> <RegisterPage /> </GuestView>} />
+        <Route path='/logout' element={<AuthenticatedView> <LogoutPage /> </AuthenticatedView>} />
       </Route>)
   );
 
