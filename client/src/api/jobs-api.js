@@ -15,10 +15,10 @@ export const getOne = (jobId) => request.get(`${BASE_URL}/${jobId}`);
 
 export const create = (jobData) => request.post(`${BASE_URL}`, jobData);
 
-const gamesAPI = {
+const jobsAPI = {
   getOne,
   getAll,
   create
 };
 
-export default gamesAPI;
+export default jobsAPI;
