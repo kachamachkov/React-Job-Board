@@ -1,15 +1,8 @@
+import { useParams } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
+import { useGetOneJobs } from "../hooks/useJobs";
+import { useEffect } from "react";
 
-// const initialValues = {
-//   type
-//   title
-//   description
-//   salary
-//   location
-//   company
-//   company_description
-//   contact_email
-// }
 
 const initialValues = {
   title: '',
@@ -24,14 +17,18 @@ const initialValues = {
 
 
 const EditJobPage = () => {
+  const { jobId } = useParams();
+  const [job, setJob] = useGetOneJobs(jobId);
+  console.log(job);
 
   const {
     values,
     changeHandler,
-    submitHandler
-  } = useForm(initialValues, (values) => {
-    console.log(values);
+    submitHandler,
+  } = useForm(Object.assign(initialValues, job), (values) => {
   });
+
+
 
   return (
     <section className="bg-indigo-50">
