@@ -6,8 +6,8 @@ const BASE_URL = 'http://localhost:3030/data/jobs';
 export const getAll = async () => {
 
   const result = await request.get(BASE_URL);
-  const games = Object.values(result);
-  return games;
+  const jobs = Object.values(result);
+  return jobs;
 
 };
 
