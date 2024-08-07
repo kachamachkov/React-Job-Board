@@ -60,3 +60,6 @@
   - [x] API function
   - [x] Create Hook
 - [ ] Latest jobs
+
+## 9. Refactoring
+- [x] Extract auth state from app component
