@@ -12,51 +12,51 @@
 - [x] Add links to navigation
 
 ## 3. Create service layer
-- [ ] Service layer architecture
-- [ ] Abstract requester
-- [ ] Add jobs api
-- [ ] Pre-seed practice server with jobs data
+- [x] Service layer architecture
+- [x] Abstract requester
+- [x] Add jobs api
+- [x] Pre-seed practice server with jobs data
 
 ## 4. Page implementations
-- [ ] Job list
-- [ ] Details
-  - [ ] Details link
-  - [ ] Details route
-  - [ ] API function - get one
-- [ ] Home
+- [x] Job list
+- [x] Details
+  - [x] Details link
+  - [x] Details route
+  - [x] API function - get one
+- [x] Home
 
 ## 5. Comments
-- [ ] Create service for nester resource `comments`
+- [x] Create service for nester resource `comments`
 - [ ] POST comment to server
 - [ ] Read comments from server
 - [ ] Dynamically update comments in component
 - [ ] Clear form
 
 ## 6. API custom hooks
-- [ ] Form Hook
-- [ ] JobAPI Hooks
+- [x] Form Hook
+- [x] JobAPI Hooks
 - [ ] Comment Hooks
 
 ## 7. Authentication
-- [ ] Auth API
-  - [ ] Login
-  - [ ] Register
+- [x] Auth API
+  - [x] Login
+  - [x] Register
   - [ ] Logout
-- [ ] Auth API Hook
-  - [ ] Login
-  - [ ] Register
+- [x] Auth API Hook
+  - [x] Login
+  - [x] Register
   - [ ] Logout
-- [ ] Auth state & context
-- [ ] Token management
-- [ ] Login
-- [ ] Register
-  - [ ] Add form validation
+- [x] Auth state & context
+- [x] Token management
+- [x] Login
+- [x] Register
+  - [x] Add form validation
 - [ ] Logout
-- [ ] Authorized reuqests
+- [x] Authorized reuqests
 
 ## 8. UI Implementation
-- [ ] Dynamic navigtion
-- [ ] Create job
-  - [ ] API function
-  - [ ] Create Hook
+- [x] Dynamic navigtion
+- [x] Create job
+  - [x] API function
+  - [x] Create Hook
 - [ ] Latest jobs
