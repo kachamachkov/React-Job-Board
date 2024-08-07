@@ -1348,11 +1348,9 @@
         description: "We are seeking a talented Front-End Developer to join our team in Sofia, Bulgaria. The ideal candidate will have strong skills in HTML, CSS, and JavaScript, with experience working with modern JavaScript frameworks such as React or Angular.",
         location: "Sofia, Bulgaria",
         salary: "7-10K BGN",
-        company: {
-          name: "NewTek Solutions",
-          description: "NewTek Solutions is a leading technology company specializing in web development and digital solutions. We pride ourselves on delivering high-quality products and services to our clients while fostering a collaborative and innovative work environment.",
-          contactEmail: "support@teksolutions.com"
-        },
+        companyName: "NewTek Solutions",
+        companyDescription: "NewTek Solutions is a leading technology company specializing in web development and digital solutions. We pride ourselves on delivering high-quality products and services to our clients while fostering a collaborative and innovative work environment.",
+        contactEmail: "support@teksolutions.com",
         _createdOn: 1613551279012
 
       },
@@ -1363,11 +1361,9 @@
         description: "Join our team as a Front-End Developer in sunny Plovdiv, Bulgaria. We are looking for a motivated individual with a passion for crafting beautiful and responsive web applications. Experience with UI/UX design principles and a strong attention to detail are highly desirable.",
         location: "Plovdiv, Buglaria",
         salary: "6-8K BGN",
-        company: {
-          name: "Veneer Solutions",
-          description: "Veneer Solutions is a creative agency specializing in digital design and development. Our team is dedicated to pushing the boundaries of creativity and innovation to deliver exceptional results for our clients.",
-          contactEmail: "support@veneer.com"
-        },
+        companyName: "Veneer Solutions",
+        companyDescription: "Veneer Solutions is a creative agency specializing in digital design and development. Our team is dedicated to pushing the boundaries of creativity and innovation to deliver exceptional results for our clients.",
+        contactEmail: "support@veneer.com",
         _createdOn: 1613551344360
       },
     },
