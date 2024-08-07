@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 
 import Spinner from "../components/Spinner";
@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 
 import { useGetOneJobs } from "../hooks/useJobs";
 import { useForm } from "../hooks/useForm";
+import { AuthContext } from "../contexts/AuthContext";
+import useCreateComment from "../hooks/useCreateComment";
 
 const initialValues = {
   comment: ''
@@ -16,8 +18,10 @@ const initialValues = {
 const JobPage = () => {
   const { jobId } = useParams();
   // const [loading, setLoading] = useState(true);
-  const [job, setJob] = useGetOneJobs(jobId);
+  const createJobComment = useCreateComment();
+  const [job] = useGetOneJobs(jobId);
 
+  const { isAuthenticated } = useContext(AuthContext);
 
   const [comment, setComment] = useState('');
 
@@ -26,8 +30,8 @@ const JobPage = () => {
     changeHandler,
     submitHandler
 
-  } = useForm(initialValues, (values) => {
-    console.log(values);
+  } = useForm(initialValues, ({ comment }) => {
+    createJobComment(jobId, comment);
   });
 
 
@@ -62,8 +66,8 @@ const JobPage = () => {
   // };
 
 
-// loading ? <Spinner /> :
-  return  (
+  // loading ? <Spinner /> :
+  return (
     <>
       <section>
         <div className="container m-auto py-6 px-6">
@@ -124,25 +128,29 @@ const JobPage = () => {
                 <p className="mb-4">{job.salary}</p> */}
               </div>
 
+              {isAuthenticated && (
+                <div className="bg-white p-6 rounded-lg shadow-md mt-6">
+                  <h3 className="text-indigo-800 text-lg font-bold mb-6">
+                    Add Comment
+                  </h3>
 
-              <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-                <h3 className="text-indigo-800 text-lg font-bold mb-6">
-                  Add Comment
-                </h3>
-                <form onSubmit={submitHandler}>
-                  <textarea className="rounded-sm bg-gray-100 mb-4 h-full w-full focus:shadow-outline mt-4 block"
-                    name="comment"
-                    placeholder="Comment..."
-                    value={values.comment}
-                    onChange={changeHandler}
+                  <form onSubmit={submitHandler}>
+                    <textarea className="rounded-sm bg-gray-100 mb-4 h-full w-full focus:shadow-outline mt-4 block"
+                      name="comment"
+                      placeholder="Comment..."
+                      value={values.comment}
+                      onChange={changeHandler}
 
-                  ></textarea>
+                    ></textarea>
 
-                  <input type="submit" value='Add Comment'
-                    className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-                  />
-                </form>
-              </div>
+                    <input type="submit" value='Add Comment'
+                      className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                    />
+                  </form>
+
+
+                </div>
+              )}
 
 
             </main>
