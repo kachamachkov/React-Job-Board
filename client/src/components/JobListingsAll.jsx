@@ -1,19 +1,9 @@
 import JobListing from './JobListing';
-import { useEffect, useState } from 'react';
-import jobsAPI from '../api/jobs-api';
+import { useGetAllJobs } from '../hooks/useJobs';
 
-const JobListings = ({ isHome = false }) => {
+const JobListingsAll = ({ isHome = false }) => {
 
-  const [latestJobs, setLatestJobs] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const result = await jobsAPI.getLatestJobs();
-
-      setLatestJobs(result);
-    })();
-  }, []);
-
+  const [jobs, setJobs] = useGetAllJobs([])
 
   return (
     <section className="bg-blue-50 px-4 py-10">
@@ -22,7 +12,7 @@ const JobListings = ({ isHome = false }) => {
           {isHome ? 'Recent Jobs' : 'Browse Jobs'}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {latestJobs.map((job) => (
+          {jobs.map((job) => (
             <JobListing key={job._id} job={job} />
           ))}
         </div>
@@ -30,4 +20,4 @@ const JobListings = ({ isHome = false }) => {
     </section >
   );
 };
-export default JobListings;
+export default JobListingsAll;

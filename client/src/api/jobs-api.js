@@ -12,12 +12,16 @@ export const getAll = async () => {
 };
 
 export const getLatestJobs = async () => {
-  const urlSearchParams = new URLSearchParams({
-    sortBy: `_createdOn desc`,
-    pageSize: 3,
-  });
 
-  const result = await request.get(`${BASE_URL}?${urlSearchParams.toString()}`);
+  // const urlSearchParams = new URLSearchParams({
+  //   sortBy: `${encode('_createdOn desc')}`,
+  //   pageSize: 3,
+  // });
+
+  // BUG after 1st use
+  // const result = await request.get(`${BASE_URL}?${urlSearchParams.toString()}`);
+
+  const result = await request.get(`${BASE_URL}?sortBy=_createdOn%20desc&pageSize=3`);
 
   const latestGames = Object.values(result)
 
