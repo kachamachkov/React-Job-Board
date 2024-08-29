@@ -1,4 +1,4 @@
-import { getAccessToken } from "../utils/authUtils";
+import { getAccessToken } from '../utils/authUtils';
 
 async function requester(method, url, data) {
   const options = {};
@@ -8,7 +8,7 @@ async function requester(method, url, data) {
   if (accessToken) {
     options.headers = {
       ...options.headers,
-      'X-Authorization': accessToken
+      'X-Authorization': accessToken,
     };
   }
   if (method !== 'GET') {
@@ -37,7 +37,6 @@ async function requester(method, url, data) {
   return result;
 }
 
-
 export const get = requester.bind(null, 'GET');
 export const post = requester.bind(null, 'POST');
 export const put = requester.bind(null, 'PUT');
@@ -47,5 +46,5 @@ export default {
   get,
   post,
   put,
-  del
+  del,
 };

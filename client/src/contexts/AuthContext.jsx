@@ -1,6 +1,5 @@
-import { createContext } from "react";
-import usePersistedState from "../hooks/usePersistedState";
-
+import { createContext } from 'react';
+import usePersistedState from '../hooks/usePersistedState';
 
 export const AuthContext = createContext({
   userId: '',
@@ -20,7 +19,6 @@ export function AuthContextProvider(props) {
 
   const logout = () => {
     setAuthState(null);
-
   };
 
   const contextData = {
@@ -29,7 +27,7 @@ export function AuthContextProvider(props) {
     accessToken: authState?.accessToken,
     isAuthenticated: !!authState?.email,
     changeAuthState,
-    logout
+    logout,
   };
 
   return (
