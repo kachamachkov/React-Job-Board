@@ -40,7 +40,7 @@ const NavBar = () => {
                     <NavLink to='/logout' className={linkClass}>
                       Logout
                     </NavLink>
-                    <div>
+                    <div className='text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'>
                       {`Hello, ${email}`}
                     </div>
                   </>
