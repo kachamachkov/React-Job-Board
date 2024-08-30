@@ -49,7 +49,7 @@ const RegisterPage = () => {
               placeholder='gosho@gmail.com'
               value={values.email}
               onChange={changeHandler}
-              autoComplete=''
+              autoComplete='off'
             />
           </div>
 
@@ -64,7 +64,7 @@ const RegisterPage = () => {
               className='bg-gray-100 border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600'
               value={values.password}
               onChange={changeHandler}
-              autoComplete=''
+              autoComplete='off'
             />
           </div>
 
@@ -82,7 +82,7 @@ const RegisterPage = () => {
               className='bg-gray-100 border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600'
               value={values.rePassword}
               onChange={changeHandler}
-              autoComplete=''
+              autoComplete='off'
             />
           </div>
 

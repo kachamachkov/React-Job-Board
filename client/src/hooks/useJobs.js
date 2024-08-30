@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import jobsAPI from '../api/jobs-api';
 
 export function useGetAllJobs() {
-
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
@@ -12,7 +11,6 @@ export function useGetAllJobs() {
       setJobs(result);
     })();
   }, []);
-
 
   return [jobs, setJobs];
 }
@@ -27,16 +25,11 @@ export function useGetOneJobs(jobId) {
     })();
   }, [jobId]);
 
-  return [
-    job,
-    setJob
-  ];
+  return [job, setJob];
 }
 
 export function useCreateJob() {
-
   const jobCreateHandler = (jobData) => jobsAPI.create(jobData);
 
   return jobCreateHandler;
-
 }

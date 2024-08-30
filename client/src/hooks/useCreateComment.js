@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react";
-import commentsApi from "../api/comments-api";
+import { useEffect, useState } from 'react';
+import commentsApi from '../api/comments-api';
 
 export function useCreateComment() {
-
   const createHandler = (jobId, comment) => commentsApi.create(jobId, comment);
 
-
   return createHandler;
-
 }
 
 export function useGetAllComments(jobId) {
@@ -18,7 +15,6 @@ export function useGetAllComments(jobId) {
       const result = await commentsApi.getAll(jobId);
 
       setComments(result);
-
     })();
   }, [jobId]);
 
