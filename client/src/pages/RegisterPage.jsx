@@ -6,7 +6,7 @@ import { useState } from 'react';
 const initialValues = { email: '', password: '', rePassword: '' };
 
 const RegisterPage = () => {
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
   const register = useRegister();
   const navigate = useNavigate();
 
@@ -20,6 +20,7 @@ const RegisterPage = () => {
       await register(email, password);
       navigate('/');
     } catch (err) {
+      console.log(err.message);
       setError(err.message);
     }
   };
@@ -50,6 +51,9 @@ const RegisterPage = () => {
               value={values.email}
               onChange={changeHandler}
               autoComplete='off'
+              minLength={3}
+              maxLength={32}
+              required
             />
           </div>
 
@@ -65,6 +69,9 @@ const RegisterPage = () => {
               value={values.password}
               onChange={changeHandler}
               autoComplete='off'
+              required
+              minLength={3}
+              maxLength={32}
             />
           </div>
 
@@ -83,6 +90,9 @@ const RegisterPage = () => {
               value={values.rePassword}
               onChange={changeHandler}
               autoComplete='off'
+              required
+              minLength={3}
+              maxLength={32}
             />
           </div>
 
