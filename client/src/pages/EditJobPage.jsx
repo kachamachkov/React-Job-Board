@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import { useGetOneJobs } from '../hooks/useJobs';
 import jobsAPI from '../api/jobs-api';
+import { useState } from 'react';
 
 const initialValues = {
   title: '',
@@ -18,13 +19,21 @@ const EditJobPage = () => {
   const navigate = useNavigate();
   const { jobId } = useParams();
   const [job] = useGetOneJobs(jobId);
+  const [error, setError] = useState(null);
 
   const { values, changeHandler, submitHandler } = useForm(
     Object.assign(initialValues, job),
     async (values) => {
-      await jobsAPI.update(jobId, values);
+      try {
+        await jobsAPI.update(jobId, values);
 
-      navigate(`/jobs/${jobId}`);
+        navigate(`/jobs/${jobId}`);
+      } catch (err) {
+        console.log(err.message);
+        setError(
+          'Oops, there was an error editing the job listing, please try again.'
+        );
+      }
     }
   );
 
@@ -69,6 +78,8 @@ const EditJobPage = () => {
                 name='title'
                 className='border rounded w-full py-2 px-3 mb-2'
                 placeholder='eg. Beautiful Apartment In Miami'
+                minLength={3}
+                maxLength={32}
                 required
                 value={values.title}
                 onChange={changeHandler}
@@ -89,6 +100,9 @@ const EditJobPage = () => {
                 placeholder='Update any job duties, expectations, requirements, etc'
                 value={values.description}
                 onChange={changeHandler}
+                required
+                minLength={3}
+                maxLength={32}
               ></textarea>
             </div>
 
@@ -126,6 +140,8 @@ const EditJobPage = () => {
                 name='location'
                 className='border rounded w-full py-2 px-3 mb-2'
                 placeholder='Company Location'
+                minLength={3}
+                maxLength={32}
                 required
                 value={values.location}
                 onChange={changeHandler}
@@ -149,6 +165,9 @@ const EditJobPage = () => {
                 placeholder='Company Name'
                 value={values.companyName}
                 onChange={changeHandler}
+                minLength={3}
+                maxLength={32}
+                required
               />
             </div>
 
@@ -167,6 +186,9 @@ const EditJobPage = () => {
                 placeholder='What does your company do?'
                 value={values.companyDescription}
                 onChange={changeHandler}
+                required
+                minLength={3}
+                maxLength={32}
               ></textarea>
             </div>
 
@@ -184,6 +206,8 @@ const EditJobPage = () => {
                 className='border rounded w-full py-2 px-3'
                 placeholder='Email address for applicants'
                 required
+                minLength={3}
+                maxLength={32}
                 value={values.contactEmail}
                 onChange={changeHandler}
               />
@@ -195,6 +219,11 @@ const EditJobPage = () => {
               >
                 Update Job
               </button>
+              {error ? (
+                <span className='text-red-500 text-xl mt-2 justify-center'>
+                  {error}
+                </span>
+              ) : null}
             </div>
           </form>
         </div>

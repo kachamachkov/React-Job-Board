@@ -1,19 +1,18 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
+import { useContext, useState } from 'react';
 
+import Spinner from '../components/Spinner';
+import { FaArrowLeft, FaMapMarker } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
-import Spinner from "../components/Spinner";
-import { FaArrowLeft, FaMapMarker } from "react-icons/fa";
-import { Link } from "react-router-dom";
-
-import { useGetOneJobs } from "../hooks/useJobs";
-import { useForm } from "../hooks/useForm";
-import { AuthContext } from "../contexts/AuthContext";
-import { useCreateComment, useGetAllComments } from "../hooks/useCreateComment";
-import jobsAPI from "../api/jobs-api";
+import { useGetOneJobs } from '../hooks/useJobs';
+import { useForm } from '../hooks/useForm';
+import { AuthContext } from '../contexts/AuthContext';
+import { useCreateComment, useGetAllComments } from '../hooks/useCreateComment';
+import jobsAPI from '../api/jobs-api';
 
 const initialValues = {
-  comment: ''
+  comment: '',
 };
 
 const JobPage = () => {
@@ -26,165 +25,148 @@ const JobPage = () => {
 
   const { isAuthenticated, userId } = useContext(AuthContext);
 
+  const { values, changeHandler, submitHandler } = useForm(
+    initialValues,
+    async ({ comment }) => {
+      try {
+        const newComment = await createJobComment(jobId, comment);
 
-  const {
-    values,
-    changeHandler,
-    submitHandler
-
-  } = useForm(initialValues, async ({ comment }) => {
-    try {
-
-      const newComment = await createJobComment(jobId, comment);
-
-      setComments(oldComments => [...oldComments, newComment]);
-
-    } catch (err) {
-      console.log(err.message);
+        setComments((oldComments) => [...oldComments, newComment]);
+      } catch (err) {
+        console.log(err.message);
+      }
     }
-  });
+  );
 
   const isOwner = userId === job._ownerId;
 
   const gameDeleteHandler = async () => {
     try {
-
       await jobsAPI.remove(jobId);
 
       navigate('/');
-
     } catch (err) {
       console.log(err.message);
     }
   };
 
-
   // loading ? <Spinner /> :
   return (
     <>
       <section>
-        <div className="container m-auto py-6 px-6">
+        <div className='container m-auto py-6 px-6'>
           <Link
-            to="/jobs"
-            className="text-indigo-500 hover:text-indigo-600 flex items-center"
+            to='/jobs'
+            className='text-indigo-500 hover:text-indigo-600 flex items-center'
           >
-            <FaArrowLeft className="mr-2" /> Back to Job Listings
+            <FaArrowLeft className='mr-2' /> Back to Job Listings
           </Link>
         </div>
       </section>
 
-      <section className="bg-indigo-50">
-        <div className="container m-auto py-10 px-6">
-          <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
+      <section className='bg-indigo-50'>
+        <div className='container m-auto py-10 px-6'>
+          <div className='grid grid-cols-1 md:grid-cols-70/30 w-full gap-6'>
             <main>
-              <div
-                className="bg-white p-6 rounded-lg shadow-md text-center md:text-left"
-              >
-                <div className="text-gray-500 mb-4">{job.type}</div>
-                <h1 className="text-3xl font-bold mb-4">
-                  {job.title}
-                </h1>
-                <div
-                  className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
-                >
-                  <FaMapMarker className="text-orange-700 mr-1" />
-                  <p className="text-orange-700">{job.location}</p>
+              <div className='bg-white p-6 rounded-lg shadow-md text-center md:text-left'>
+                <div className='text-gray-500 mb-4'>{job.type}</div>
+                <h1 className='text-3xl font-bold mb-4'>{job.title}</h1>
+                <div className='text-gray-500 mb-4 flex align-middle justify-center md:justify-start'>
+                  <FaMapMarker className='text-orange-700 mr-1' />
+                  <p className='text-orange-700'>{job.location}</p>
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-                <h3 className="text-indigo-800 text-lg font-bold mb-6">
+              <div className='bg-white p-6 rounded-lg shadow-md mt-6'>
+                <h3 className='text-indigo-800 text-lg font-bold mb-6'>
                   Job Description
                 </h3>
 
-                <p className="mb-4">
-                  {job.description}
-                </p>
+                <p className='mb-4'>{job.description}</p>
 
-                <h3 className="text-indigo-800 text-lg font-bold mb-2">Salary</h3>
+                <h3 className='text-indigo-800 text-lg font-bold mb-2'>
+                  Salary
+                </h3>
 
-                <p className="mb-4">{job.salary}</p>
+                <p className='mb-4'>{job.salary}</p>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-                <h3 className="text-indigo-800 text-lg font-bold mb-6">
+              <div className='bg-white p-6 rounded-lg shadow-md mt-6'>
+                <h3 className='text-indigo-800 text-lg font-bold mb-6'>
                   Comments
                 </h3>
 
-                <div className="mb-4">
-                  {comments.map(comment => (
-                    <p key={comment._id}>{comment.author?.email}: {comment.text}</p>
-
+                <div className='mb-4'>
+                  {comments.map((comment) => (
+                    <p key={comment._id}>
+                      {comment.author?.email}: {comment.text}
+                    </p>
                   ))}
                 </div>
-
-
               </div>
 
               {isAuthenticated && (
-                <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-                  <h3 className="text-indigo-800 text-lg font-bold mb-6">
+                <div className='bg-white p-6 rounded-lg shadow-md mt-6'>
+                  <h3 className='text-indigo-800 text-lg font-bold mb-6'>
                     Add Comment
                   </h3>
 
                   <form onSubmit={submitHandler}>
-                    <textarea className="rounded-sm bg-gray-100 mb-4 h-full w-full focus:shadow-outline mt-4 block"
-                      name="comment"
-                      placeholder="Comment..."
+                    <textarea
+                      className='rounded-sm bg-gray-100 mb-4 h-full w-full focus:shadow-outline mt-4 block'
+                      name='comment'
+                      placeholder='Comment...'
                       value={values.comment}
                       onChange={changeHandler}
-
+                      required
+                      minLength={3}
+                      maxLength={256}
                     ></textarea>
 
-                    <input type="submit" value='Add Comment'
-                      className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                    <input
+                      type='submit'
+                      value='Add Comment'
+                      className='bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block'
                     />
                   </form>
-
-
                 </div>
               )}
-
-
             </main>
 
             <aside>
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-bold mb-6">Company Info</h3>
+              <div className='bg-white p-6 rounded-lg shadow-md'>
+                <h3 className='text-xl font-bold mb-6'>Company Info</h3>
 
-                <h2 className="text-2xl">{job.companyName}</h2>
+                <h2 className='text-2xl'>{job.companyName}</h2>
 
-                <p className="my-2">
-                  {job.companyDescription}
-                </p>
+                <p className='my-2'>{job.companyDescription}</p>
 
-                <hr className="my-4" />
+                <hr className='my-4' />
 
-                <h3 className="text-xl">Contact Email:</h3>
+                <h3 className='text-xl'>Contact Email:</h3>
 
-                <p className="my-2 bg-indigo-100 p-2 font-bold">
+                <p className='my-2 bg-indigo-100 p-2 font-bold'>
                   {job.contactEmail}
                 </p>
-
-
               </div>
 
               {isOwner && (
-                <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-                  <h3 className="text-xl font-bold mb-6">Manage Job</h3>
+                <div className='bg-white p-6 rounded-lg shadow-md mt-6'>
+                  <h3 className='text-xl font-bold mb-6'>Manage Job</h3>
                   <Link
                     to={`/jobs/edit/${jobId}`}
-                    className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-                  >Edit Job
+                    className='bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block'
+                  >
+                    Edit Job
                   </Link>
-                  <button onClick={gameDeleteHandler}
-                    className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                  <button
+                    onClick={gameDeleteHandler}
+                    className='bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block'
                   >
                     Delete Job
                   </button>
                 </div>
               )}
-
             </aside>
           </div>
         </div>

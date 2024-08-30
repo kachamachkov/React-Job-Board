@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { useLogin } from '../hooks/useAuth';
 import { useForm } from '../hooks/useForm';
+import { useState } from 'react';
 
 const initialValues = { email: '', password: '' };
 
 const LoginPage = () => {
   const login = useLogin();
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
 
   const loginHandler = async ({ email, password }) => {
     try {
@@ -14,6 +16,7 @@ const LoginPage = () => {
       navigate('/');
     } catch (err) {
       console.log(err.message);
+      setError(err.message);
     }
   };
 
@@ -43,8 +46,11 @@ const LoginPage = () => {
               value={values.email}
               onChange={changeHandler}
               autoComplete='off'
+              required
             />
           </div>
+
+          {error && <span className='text-red-600'>{error}</span>}
 
           <div className='mt-3'>
             <label htmlFor='password' className='block text-base mb-2'>
@@ -58,6 +64,7 @@ const LoginPage = () => {
               autoComplete='off'
               value={values.password}
               onChange={changeHandler}
+              required
             />
           </div>
 
