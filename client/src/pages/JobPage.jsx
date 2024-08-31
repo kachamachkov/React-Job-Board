@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useContext, useState } from 'react';
 
-import Spinner from '../components/Spinner';
 import { FaArrowLeft, FaMapMarker } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
@@ -10,6 +9,7 @@ import { useForm } from '../hooks/useForm';
 import { AuthContext } from '../contexts/AuthContext';
 import { useCreateComment, useGetAllComments } from '../hooks/useCreateComment';
 import jobsAPI from '../api/jobs-api';
+import DeleteModal from '../components/DeleteModal';
 
 const initialValues = {
   comment: '',
@@ -18,10 +18,10 @@ const initialValues = {
 const JobPage = () => {
   const navigate = useNavigate();
   const { jobId } = useParams();
-  // const [loading, setLoading] = useState(true);
   const [comments, setComments] = useGetAllComments(jobId);
   const createJobComment = useCreateComment();
   const [job] = useGetOneJobs(jobId);
+  const [open, setOpen] = useState(false);
 
   const { isAuthenticated, userId } = useContext(AuthContext);
 
@@ -40,7 +40,7 @@ const JobPage = () => {
 
   const isOwner = userId === job._ownerId;
 
-  const gameDeleteHandler = async () => {
+  const jobDeleteHandler = async () => {
     try {
       await jobsAPI.remove(jobId);
 
@@ -50,7 +50,6 @@ const JobPage = () => {
     }
   };
 
-  // loading ? <Spinner /> :
   return (
     <>
       <section>
@@ -98,8 +97,8 @@ const JobPage = () => {
 
                 <div className='mb-4'>
                   {comments.map((comment) => (
-                    <p key={comment._id}>
-                      {comment.author?.email}: {comment.text}
+                    <p key={comment._id} className='bg-gray-100'>
+                      {comment.author?.email} {comment.text}
                     </p>
                   ))}
                 </div>
@@ -113,7 +112,7 @@ const JobPage = () => {
 
                   <form onSubmit={submitHandler}>
                     <textarea
-                      className='rounded-sm bg-gray-100 mb-4 h-full w-full focus:shadow-outline mt-4 block'
+                      className='rounded-sm bg-gray-100 mb-4 h-full w-full focus:shadow-outline mt-4 block '
                       name='comment'
                       placeholder='Comment...'
                       value={values.comment}
@@ -160,11 +159,37 @@ const JobPage = () => {
                     Edit Job
                   </Link>
                   <button
-                    onClick={gameDeleteHandler}
+                    onClick={() => setOpen(true)}
                     className='bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block'
                   >
                     Delete Job
                   </button>
+                  <DeleteModal open={open} onClose={() => setOpen(false)}>
+                    <div className='text-center w-56 rounded-xl'>
+                      <div className='mx-auto my-4 w-48'>
+                        <h3 className='text-lg font-black text-gray-800'>
+                          Confirm Delete
+                        </h3>
+                        <p className='text-lg text-gray-500'>
+                          Are you sure you want to delete this job posting?
+                        </p>
+                      </div>
+                      <div className='flex gap-4'>
+                        <button
+                          onClick={jobDeleteHandler}
+                          className='bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block'
+                        >
+                          Delete
+                        </button>
+                        <button
+                          className='bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block'
+                          onClick={() => setOpen(false)}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </DeleteModal>
                 </div>
               )}
             </aside>
