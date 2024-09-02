@@ -96,7 +96,6 @@ const AddJobPage = () => {
                 rows='4'
                 required
                 minLength={3}
-                maxLength={32}
                 placeholder='Add any job duties, expectations, requirements, etc'
                 value={values.description}
                 onChange={changeHandler}
@@ -182,7 +181,6 @@ const AddJobPage = () => {
                 rows='4'
                 required
                 minLength={3}
-                maxLength={32}
                 placeholder='What does your company do?'
                 value={values.companyDescription}
                 onChange={changeHandler}

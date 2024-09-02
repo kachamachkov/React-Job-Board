@@ -102,7 +102,6 @@ const EditJobPage = () => {
                 onChange={changeHandler}
                 required
                 minLength={3}
-                maxLength={32}
               ></textarea>
             </div>
 
@@ -188,7 +187,6 @@ const EditJobPage = () => {
                 onChange={changeHandler}
                 required
                 minLength={3}
-                maxLength={32}
               ></textarea>
             </div>
 

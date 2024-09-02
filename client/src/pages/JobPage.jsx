@@ -119,7 +119,6 @@ const JobPage = () => {
                       onChange={changeHandler}
                       required
                       minLength={3}
-                      maxLength={256}
                     ></textarea>
 
                     <input
