@@ -52,7 +52,6 @@ const RegisterPage = () => {
               onChange={changeHandler}
               autoComplete='off'
               minLength={3}
-              maxLength={32}
               required
             />
           </div>
@@ -71,7 +70,6 @@ const RegisterPage = () => {
               autoComplete='off'
               required
               minLength={3}
-              maxLength={32}
             />
           </div>
 
@@ -92,7 +90,6 @@ const RegisterPage = () => {
               autoComplete='off'
               required
               minLength={3}
-              maxLength={32}
             />
           </div>
 

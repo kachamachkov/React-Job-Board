@@ -79,7 +79,6 @@ const EditJobPage = () => {
                 className='border rounded w-full py-2 px-3 mb-2'
                 placeholder='eg. Beautiful Apartment In Miami'
                 minLength={3}
-                maxLength={32}
                 required
                 value={values.title}
                 onChange={changeHandler}
@@ -140,7 +139,6 @@ const EditJobPage = () => {
                 className='border rounded w-full py-2 px-3 mb-2'
                 placeholder='Company Location'
                 minLength={3}
-                maxLength={32}
                 required
                 value={values.location}
                 onChange={changeHandler}
@@ -165,7 +163,6 @@ const EditJobPage = () => {
                 value={values.companyName}
                 onChange={changeHandler}
                 minLength={3}
-                maxLength={32}
                 required
               />
             </div>
@@ -205,7 +202,6 @@ const EditJobPage = () => {
                 placeholder='Email address for applicants'
                 required
                 minLength={3}
-                maxLength={32}
                 value={values.contactEmail}
                 onChange={changeHandler}
               />

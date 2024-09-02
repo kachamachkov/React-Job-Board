@@ -76,7 +76,6 @@ const AddJobPage = () => {
                 className='border rounded w-full py-2 px-3 mb-2'
                 placeholder='eg. Junior React Dev'
                 minLength={3}
-                maxLength={32}
                 required
                 value={values.title}
                 onChange={changeHandler}
@@ -137,7 +136,6 @@ const AddJobPage = () => {
                 className='border rounded w-full py-2 px-3 mb-2'
                 placeholder='Company Location'
                 minLength={3}
-                maxLength={32}
                 required
                 value={values.location}
                 onChange={changeHandler}
@@ -161,7 +159,6 @@ const AddJobPage = () => {
                 className='border rounded w-full py-2 px-3'
                 placeholder='Company Name'
                 minLength={3}
-                maxLength={32}
                 value={values.companyName}
                 onChange={changeHandler}
               />
@@ -201,7 +198,6 @@ const AddJobPage = () => {
                 className='border rounded w-full py-2 px-3'
                 placeholder='Email address for applicants'
                 minLength={3}
-                maxLength={32}
                 required
                 value={values.contactEmail}
                 onChange={changeHandler}
