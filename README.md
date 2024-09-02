@@ -1,18 +1,19 @@
 # React Jobs :briefcase:
 
-## Project Description:
+## Project Description
 
 A personal project of mine, interactive job board built with reactjs.
 
-Frontend: ReactJS
-Backend: SoftUni practice server (vanillaJS)
+* Frontend: ReactJS
+* Backend: SoftUni practice server (vanillaJS)
+
 
 ## Features
 
 - Latest listings at home page :green_book:
 - Full CRUD operations for job listings :pushpin:
-- Guest and Authenticated UX differs:
-  - Guests can navigate through listing, but cannot edit/delete them
+- Guest and Authenticated UX differs: :shamrock:
+  - Guests can navigate through listing, but cannot edit/delete them or comment
   - Authenticated users can comment on other users listings
   - Only job listing's owner can edit/delete their listing
 - Authentication :closed_lock_with_key:
@@ -34,7 +35,7 @@ Follow these instructions to get the project up and running on your local machin
 ## 2. Clone the Repository:
 
 ```bash
-git clone https://github.com/kachamachkov/React-Job-Board
+git clone https://github.com/kachamachkov/react-jobs
 cd .
 ```
 
