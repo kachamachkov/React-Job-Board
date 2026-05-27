@@ -22,10 +22,6 @@ A personal project of mine, interactive job board built with reactjs.
   - Password: admin
 - Relations (Comments & Users) :man: :woman:
 
-## Deployment
-
-- https://react-jobs-kachamachkov-199405.web.app/
-
 ## Installation and Setup:
 
 Follow these instructions to get the project up and running on your local machine.
